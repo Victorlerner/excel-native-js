@@ -45,12 +45,14 @@ module.exports = {
   devtool: isDev ? 'source-map' : false,
   devServer: {
     port: 4203,
-    hot: isDev
+    hot: isDev,
+    historyApiFallback: true,
+    noInfo: true
   },
   plugins: [
     new CleanWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: 'index.html',
+      template: './index.html',
       minify: {
         removeComments: isProd,
         collapseWhitespace: isProd
@@ -58,6 +60,7 @@ module.exports = {
     }),
     new CopyPlugin({
       patterns: [
+        // eslint-disable-next-line max-len
         {from: path.resolve(__dirname, 'src/favicon.ico'), to: path.resolve(__dirname, 'dist')},
       ],
     }),
