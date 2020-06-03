@@ -1,4 +1,5 @@
 requirements.txt
 .idea
+dist
 node_modules
 gitcommand
