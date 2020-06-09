@@ -5,44 +5,53 @@ export class ExcelComponent extends DomListener {
     super($root, options.listeners)
     this.name = options.name || ''
     this.emitter = options.emitter
-    this.unsebsribers = []
+    this.subscribe = options.subscribe || []
+    this.store = options.store
+    this.unsubscribers = []
 
     this.prepare()
   }
 
-  // setup our component before init
-  prepare() {
+  // Настраивааем наш компонент до init
+  prepare() {}
 
-  }
-
-  /**
-   * return template
-   * @return {string}
-   */
+  // Возвращает шаблон компонента
   toHTML() {
     return ''
   }
 
-  // emit listeners about event change
+  // Уведомляем слушателей про событие event
   $emit(event, ...args) {
     this.emitter.emit(event, ...args)
   }
 
-  // subscribe to event
-
+  // Подписываемся на событие event
   $on(event, fn) {
     const unsub = this.emitter.subscribe(event, fn)
-    this.unsebsribers.push(unsub)
+    this.unsubscribers.push(unsub)
   }
 
-  // iniit component and add DOM Listeners
+  $dispatch(action) {
+    this.store.dispatch(action)
+  }
+
+  // Сюда приходят только изменения по тем полям, на которые мы подписались
+  storeChanged() {}
+
+  isWatching(key) {
+    return this.subscribe.includes(key)
+  }
+
+  // Инициализируем компонент
+  // Добавляем DOM слушателей
   init() {
     this.initDOMListeners()
   }
 
-  // delete component and clear Listeners
+  // Удаляем компонент
+  // Чистим слушатели
   destroy() {
     this.removeDOMListeners()
-    this.unsebsribers.forEach(unsub => unsub())
+    this.unsubscribers.forEach(unsub => unsub())
   }
 }

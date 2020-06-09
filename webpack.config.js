@@ -11,7 +11,7 @@ const isDev = !isProd
 console.log('ID prod', isProd)
 console.log('ID dev', isDev)
 
-const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash]${ext}`
+const filename = ext => isDev ? `bundle.${ext}` : `bundle.[hash].${ext}`
 const jsLoaders = () => {
   const loaders = [
     {
