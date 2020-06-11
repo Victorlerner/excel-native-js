@@ -1,7 +1,7 @@
 import {defaultStyles} from '@/constants'
 import {
   toInlineStyles,
-} from '@core/untils'
+} from '@core/utils'
 import {parse} from '@core/parse'
 
 const CODES = {
