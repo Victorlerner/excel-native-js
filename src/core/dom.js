@@ -12,6 +12,7 @@ class Dom {
       this.$el.innerHTML = html
       return this
     }
+
     return this.$el.outerHTML.trim()
   }
 
@@ -49,8 +50,7 @@ class Dom {
     }
     if (Element.prototype.append) {
       this.$el.append(node)
-    }
-    else {
+    } else {
       this.$el.appendChild(node)
     }
     return this

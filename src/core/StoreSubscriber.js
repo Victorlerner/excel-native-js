@@ -1,4 +1,3 @@
-import {Emitter} from '@core/Emitter'
 import {isEqual} from '@core/untils'
 
 export class StoreSubscriber {
@@ -23,6 +22,9 @@ export class StoreSubscriber {
         }
       })
       this.prevState = this.store.getState()
+      if (process.env.NODE_ENV === 'development') {
+        window['redux'] = this.prevState
+      }
     })
   }
 

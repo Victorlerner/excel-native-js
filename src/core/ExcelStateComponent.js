@@ -4,8 +4,8 @@ export class ExcelStateComponent extends ExcelComponent {
   constructor(...args) {
     super(...args)
   }
-  get template(){
-    return JSON.stringify(this.state, null,2)
+  get template() {
+    return JSON.stringify(this.state, null, 2)
   }
 
   initState(...initialState) {
@@ -13,8 +13,7 @@ export class ExcelStateComponent extends ExcelComponent {
   }
 
   setState(newState) {
-    this.state = {...this.state,...newState}
+    this.state = {...this.state, ...newState}
     this.$root.html(this.template)
   }
-
 }
