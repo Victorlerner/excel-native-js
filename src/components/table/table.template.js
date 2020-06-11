@@ -14,7 +14,6 @@ const DEFAULT_HEIGHT = 24
 
 function getWidth(state, index) {
   return (state[index] || DEFAULT_WIDTH) + 'px'
-
 }
 
 function getHeight(state, index) {
@@ -41,11 +40,9 @@ function toCell(state, row) {
         style="${styles}; width: ${width}"
       >${parse(data) || ''}</div>
     `
-
   }
 }
 function toColumn({col, index, width}) {
-
   return `
     <div class="column"
       data-type="resizable"
@@ -75,7 +72,6 @@ function createRow(index, content, state) {
 }
 
 function toChar(_, index) {
-
   return String.fromCharCode(CODES.A + index)
 }
 

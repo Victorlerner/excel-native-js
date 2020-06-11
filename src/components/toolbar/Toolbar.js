@@ -17,7 +17,6 @@ export class Toolbar extends ExcelStateComponent {
   }
 
   prepare() {
-
     this.initState(defaultStyles)
   }
 

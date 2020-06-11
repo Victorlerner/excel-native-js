@@ -10,8 +10,6 @@ function toButton(button) {
 }
 
 export function createToolbar(s) {
-  console.log('createToolbar')
-  console.log(s)
   const buttons = [
     {
       icon: 'format_align_left',
@@ -41,7 +39,11 @@ export function createToolbar(s) {
     {
       icon: 'format_underlined',
       active: s['textDecoration'] === 'underline',
-      value:  {textDecoration: s['textDecoration'] === 'underline' ? 'none' : 'underline'},
+      value: {
+        textDecoration: s['textDecoration'] === 'underline'
+            ? 'none'
+            : 'underline'
+      }
     },
   ]
 

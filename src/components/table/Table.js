@@ -51,19 +51,15 @@ export class Table extends ExcelComponent {
 
   selectCell($cell) {
     this.selection.select($cell)
-    this.$emit('table:select', $cell)
     const styles = $cell.getStyles(Object.keys(defaultStyles))
-    console.log('Styles to dis', styles)
     this.$dispatch(actions.changeStyles(styles))
-
   }
 
   async resizeTable(event) {
     try {
       const data = await resizeHandler(this.$root, event)
       this.$dispatch(actions.tableResize(data))
-    }
-    catch (e) {
+    } catch (e) {
       console.warn('Resize error', e.message)
     }
   }
@@ -71,15 +67,13 @@ export class Table extends ExcelComponent {
   onMousedown(event) {
     if (shouldResize(event)) {
       this.resizeTable(event)
-    }
-    else if (isCell(event)) {
+    } else if (isCell(event)) {
       const $target = $(event.target)
       if (event.shiftKey) {
         const $cells = matrix($target, this.selection.current).
             map(id => this.$root.find(`[data-id="${id}"]`))
         this.selection.selectGroup($cells)
-      }
-      else {
+      } else {
         this.selectCell($target)
       }
     }
