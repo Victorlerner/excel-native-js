@@ -36,14 +36,13 @@ class Dom {
     this.$el.addEventListener(eventType, callback)
   }
 
-  off(eventType) {
-    this.$el.removeEventListener(eventType, this.$$listenrs[eventType])
+  off(eventType, callback) {
+    this.$el.removeEventListener(eventType, callback)
   }
 
   find(selector) {
     return $(this.$el.querySelector(selector))
   }
-
   append(node) {
     if (node instanceof Dom) {
       node = node.$el
