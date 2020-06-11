@@ -5,7 +5,7 @@ import {Formula} from '@/components/formula/Formula'
 import {Table} from '@/components/table/Table'
 import {Excel} from '@/components/excel/Excel'
 import {debounce, storage} from '@core/untils'
-import {createStore} from '@core/createStore'
+import {createStore} from '@core/store/createStore'
 import {rootReducer} from '@/redux/rootReducer'
 import {normalizeInitialState} from '@/redux/initalState'
 
